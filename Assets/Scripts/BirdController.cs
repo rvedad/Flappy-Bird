@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BirdController : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class BirdController : MonoBehaviour
     public Sprite wingDown;
     public float animationSpeed = 0.1f;
 
+    private Sprite[] frames;
+    private int currentFrame = 0;
+    private float animationTimer = 0f;
+    private float startY;
+
     [Header("Rotation")]
     public float rotateUpAngle = 30f;
     public float rotateDownAngle = -90f;
@@ -24,10 +30,8 @@ public class BirdController : MonoBehaviour
     public AudioClip hitSound;
     private AudioSource audioSource;
 
-    private Sprite[] frames;
-    private int currentFrame = 0;
-    private float animationTimer = 0f;
-    private float startY;
+    [Header("Death Animation")]
+    public float deathJumpForce = 5f;
 
     void Start()
     {
@@ -112,12 +116,15 @@ public class BirdController : MonoBehaviour
 
     public void Die()
     {
+        rb.simulated = true;
+        StartCoroutine(DeathAnimation());
         rb.linearVelocity = Vector2.zero;
         audioSource.PlayOneShot(hitSound);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+         if (GameManager.instance.currentState == GameManager.GameState.Dead) return;
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("Ceiling"))
         {
             GameManager.instance.BirdDied();
@@ -128,4 +135,32 @@ public class BirdController : MonoBehaviour
     {
         rb.simulated = true;
     }
+
+    IEnumerator DeathAnimation()
+{
+    StartCoroutine(FlashWhite());
+
+    rb.linearVelocity = new Vector2(0, deathJumpForce);
+
+    rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+
+    rb.angularVelocity = -200f;
+
+    yield return new WaitForSeconds(0.5f);
+
+    rb.angularVelocity = 0f;
+    rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+}
+
+IEnumerator FlashWhite()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(0.14f);
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.14f);
+    }
+    spriteRenderer.color = Color.white;
+}
 }
