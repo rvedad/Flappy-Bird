@@ -52,7 +52,14 @@ public class BirdController : MonoBehaviour
             return;
         }
 
-        if (GameManager.instance.currentState == GameManager.GameState.Dead) return;
+        if (GameManager.instance.currentState == GameManager.GameState.Dead)
+        {
+            if (GameManager.instance.CanRestart && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+            {
+                GameManager.instance.RestartGame();
+            }
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
@@ -62,7 +69,6 @@ public class BirdController : MonoBehaviour
         if (rb.linearVelocity.y < maxFallSpeed)
             rb.linearVelocity = new Vector2(0, maxFallSpeed);
 
-        // Rotation
         float targetAngle = rb.linearVelocity.y > 0 ? rotateUpAngle : rotateDownAngle;
         float angle = Mathf.LerpAngle(
             transform.eulerAngles.z,

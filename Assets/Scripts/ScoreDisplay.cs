@@ -35,6 +35,7 @@ public class ScoreDisplay : MonoBehaviour
     }
     public void DisplayScore(int score)
     {
+        if (digitObjects == null) return;
         string scoreStr = score.ToString();
 
         foreach (GameObject d in digitObjects)

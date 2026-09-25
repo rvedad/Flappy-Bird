@@ -25,12 +25,18 @@ public class GameManager : MonoBehaviour
 
     public GameState currentState = GameState.Waiting;
 
+    private float deathTimer = 0f;
+    private float restartDelay = 1f;
+    public bool CanRestart { get; private set; } = false;
+
+
     void Awake()
     {
         gameOverImage.SetActive(false);
         instance = this;
         currentState = GameState.Waiting;
         startPanel.SetActive(true);
+        scoreDisplay.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -38,12 +44,25 @@ public class GameManager : MonoBehaviour
         scoreDisplay.DisplayScore(0);
     }
 
+    void Update()
+    {
+        if (currentState == GameState.Dead && !CanRestart)
+        {
+            deathTimer += Time.deltaTime;
+            if (deathTimer >= restartDelay)
+                CanRestart = true;
+        }
+    }
+
     public void StartGame()
     {
+        // score = 0;
         currentState = GameState.Playing;
         startPanel.SetActive(false);
         FindAnyObjectByType<BirdController>().StartPlaying();
         FindAnyObjectByType<PipeSpawner>().StartSpawning();
+        scoreDisplay.gameObject.SetActive(true);
+        // scoreDisplay.DisplayScore(0);
     }
 
     public void AddScore()
