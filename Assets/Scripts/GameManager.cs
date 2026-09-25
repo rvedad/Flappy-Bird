@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         score++;
         scoreDisplay.DisplayScore(score);
         audioSource.PlayOneShot(scoreSound);
+
+        FindAnyObjectByType<PipeSpawner>().UpdateDifficulty(score);
     }
 
     public void BirdDied()

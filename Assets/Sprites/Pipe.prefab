@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca5fa48abb55d4fafcf95de53ce77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeController
-  scrollSpeed: 3
+  scrollSpeed: 2
 --- !u!1 &4556998812028047493
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2071530055
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6102778372705486381, guid: 43a515075bb8c9a44b8b7eee127b4991, type: 3}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2071530055
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6102778372705486381, guid: 43a515075bb8c9a44b8b7eee127b4991, type: 3}

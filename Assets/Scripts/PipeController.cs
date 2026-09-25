@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PipeController : MonoBehaviour
 {
-    public float scrollSpeed = 3f;
+    public float scrollSpeed = 2f;
     private bool scored = false;
     private bool isScrolling = true;
     void Update()
@@ -30,5 +30,10 @@ public class PipeController : MonoBehaviour
     public void StopScrolling()
     {
         isScrolling = false;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        scrollSpeed = speed;
     }
 }

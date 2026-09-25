@@ -1438,9 +1438,14 @@ MonoBehaviour:
   pipePrefab: {fileID: 3618137187729891962, guid: 2d8a68f2f251f7e45b4b94efe136cbb5, type: 3}
   spawnInterval: 2
   minGapY: -1
-  maxGapY: 1.5
-  gapSize: 2.2
+  maxGapY: 3.5
+  gapSize: 2
   pipeHeight: 6.4
+  initialSpeed: 2
+  maxSpeed: 3.5
+  speedIncreasePerPoint: 0.1
+  minSpawnInterval: 1.2
+  spawnIntervalDecreasePerPoint: 0.02
 --- !u!4 &2002869968
 Transform:
   m_ObjectHideFlags: 0
