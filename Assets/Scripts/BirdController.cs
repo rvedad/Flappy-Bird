@@ -19,6 +19,11 @@ public class BirdController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
+    [Header("Audio")]
+    public AudioClip flapSound;
+    public AudioClip hitSound;
+    private AudioSource audioSource;
+
     private Sprite[] frames;
     private int currentFrame = 0;
     private float animationTimer = 0f;
@@ -26,6 +31,7 @@ public class BirdController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         frames = new Sprite[] { wingUp, wingMid, wingDown, wingMid };
@@ -94,11 +100,13 @@ public class BirdController : MonoBehaviour
     void Flap()
     {
         rb.linearVelocity = new Vector2(0, flapForce);
+        audioSource.PlayOneShot(flapSound);
     }
 
     public void Die()
     {
         rb.linearVelocity = Vector2.zero;
+        audioSource.PlayOneShot(hitSound);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

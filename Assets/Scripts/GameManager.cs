@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverImage;
     public GameObject startPanel;
 
+    [Header("Audio")]
+    public AudioClip scoreSound;
+    public AudioClip dieSound;
+    private AudioSource audioSource;
+
     public enum GameState
     {
         Waiting,
@@ -29,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         scoreDisplay.DisplayScore(0);
     }
 
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (currentState != GameState.Playing) return;
         score++;
         scoreDisplay.DisplayScore(score);
+        audioSource.PlayOneShot(scoreSound);
     }
 
     public void BirdDied()
@@ -63,6 +70,7 @@ public class GameManager : MonoBehaviour
         }
 
         gameOverImage.SetActive(true);
+        audioSource.PlayOneShot(dieSound);
     }
 
     public void RestartGame()
