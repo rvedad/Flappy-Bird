@@ -16,6 +16,7 @@ public class DayNightCycle : MonoBehaviour
 
     void Update()
     {
+         if (GameManager.instance == null) return;
         if (GameManager.instance.currentState != GameManager.GameState.Playing) return;
 
         int score = GameManager.instance.score;

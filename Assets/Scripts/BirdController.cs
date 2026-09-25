@@ -41,6 +41,7 @@ public class BirdController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance == null) return;
         if (GameManager.instance.currentState == GameManager.GameState.Waiting)
         {
             HoverBird();

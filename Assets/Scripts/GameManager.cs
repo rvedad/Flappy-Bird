@@ -3,6 +3,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("High Score")]
+    public ScoreDisplay highScoreDisplay;
+    public GameObject highScoreIcon;
+
+    private int highScore = 0;
+
     [Header("Score")]
     public int score = 0;
     public ScoreDisplay scoreDisplay;
@@ -37,9 +43,12 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Waiting;
         startPanel.SetActive(true);
         scoreDisplay.gameObject.SetActive(false);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreIcon.SetActive(false);
     }
     void Start()
     {
+        highScoreDisplay.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         scoreDisplay.DisplayScore(0);
     }
@@ -56,13 +65,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        // score = 0;
         currentState = GameState.Playing;
         startPanel.SetActive(false);
         FindAnyObjectByType<BirdController>().StartPlaying();
         FindAnyObjectByType<PipeSpawner>().StartSpawning();
         scoreDisplay.gameObject.SetActive(true);
-        // scoreDisplay.DisplayScore(0);
     }
 
     public void AddScore()
@@ -90,8 +97,14 @@ public class GameManager : MonoBehaviour
             pipe.StopScrolling();
         }
 
+        CheckHighScore();
         gameOverImage.SetActive(true);
         audioSource.PlayOneShot(dieSound);
+        if (highScoreDisplay != null)
+        {
+            highScoreDisplay.gameObject.SetActive(true);
+            highScoreIcon.SetActive(true);
+        }
     }
 
     public void RestartGame()
@@ -104,5 +117,18 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    void CheckHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
+        if (highScoreDisplay != null)
+            highScoreDisplay.DisplayScore(highScore);
     }
 }
