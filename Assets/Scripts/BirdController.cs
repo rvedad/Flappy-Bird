@@ -76,10 +76,10 @@ public class BirdController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Ground"))
     {
-        GameManager.instance.BirdDied();
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("Ceiling"))
+        {
+            GameManager.instance.BirdDied();
+        }
     }
-}
 }

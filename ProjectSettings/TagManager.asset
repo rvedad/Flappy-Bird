@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Pipe
+  - Bird
+  - Ground
+  - Ceiling
   layers:
   - Default
   - TransparentFX
@@ -44,14 +48,17 @@ TagManager:
   - name: Background
     uniqueID: 3167726151
     locked: 0
-  - name: Ground
-    uniqueID: 891730423
-    locked: 0
   - name: Bird
     uniqueID: 3292665311
     locked: 0
   - name: Pipe
     uniqueID: 2223437241
+    locked: 0
+  - name: Ground
+    uniqueID: 891730423
+    locked: 0
+  - name: UI
+    uniqueID: 573116961
     locked: 0
   m_RenderingLayers:
   - Default

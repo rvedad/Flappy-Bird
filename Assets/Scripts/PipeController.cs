@@ -24,12 +24,4 @@ public class PipeController : MonoBehaviour
             GameManager.instance.AddScore();
         }
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bird"))
-        {
-            GameManager.instance.BirdDied();
-        }
-    }
 }
