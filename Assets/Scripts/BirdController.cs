@@ -27,7 +27,7 @@ public class BirdController : MonoBehaviour
 
     void Start()
     {
-        rb.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         frames = new Sprite[] { wingUp, wingMid, wingDown, wingMid };
@@ -37,7 +37,31 @@ public class BirdController : MonoBehaviour
     {
         if (!isAlive) return;
 
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Flap();
+        }
 
+        if (rb.linearVelocity.y < maxFallSpeed)
+        {
+            rb.linearVelocity = new Vector2(0, maxFallSpeed);
+        }
+
+        float targetAngle = rb.linearVelocity.y > 0 ? rotateUpAngle : rotateDownAngle;
+        float angle = Mathf.LerpAngle(
+            transform.eulerAngles.z,
+            targetAngle,
+            rotateSpeed * Time.deltaTime
+        );
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        animationTimer += Time.deltaTime;
+        if (animationTimer >= animationSpeed)
+        {
+            animationTimer = 0f;
+            currentFrame = (currentFrame + 1) % frames.Length;
+            spriteRenderer.sprite = frames[currentFrame];
+        }
     }
 
     void Flap()
@@ -50,4 +74,12 @@ public class BirdController : MonoBehaviour
         isAlive = false;
         rb.linearVelocity = Vector2.zero;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Ground"))
+    {
+        GameManager.instance.BirdDied();
+    }
+}
 }
