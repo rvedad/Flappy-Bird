@@ -9,35 +9,53 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject gameOverImage;
+    public GameObject startPanel;
 
-    private bool isGameOver = false;
+    public enum GameState
+    {
+        Waiting,
+        Playing,
+        Dead
+    }
+
+    public GameState currentState = GameState.Waiting;
 
     void Awake()
     {
         gameOverImage.SetActive(false);
         instance = this;
+        currentState = GameState.Waiting;
+        startPanel.SetActive(true);
     }
     void Start()
     {
         scoreDisplay.DisplayScore(0);
     }
 
+    public void StartGame()
+    {
+        currentState = GameState.Playing;
+        startPanel.SetActive(false);
+        FindAnyObjectByType<BirdController>().StartPlaying();
+        FindAnyObjectByType<PipeSpawner>().StartSpawning();
+    }
+
     public void AddScore()
     {
-        if (isGameOver) return;
+        if (currentState != GameState.Playing) return;
         score++;
         scoreDisplay.DisplayScore(score);
     }
 
     public void BirdDied()
     {
-        if (isGameOver) return;
-        isGameOver = true;
-        
+        if (currentState == GameState.Dead) return;
+        currentState = GameState.Dead;
+
         FindAnyObjectByType<BirdController>().Die();
         FindAnyObjectByType<GroundScroller>().StopScrolling();
         FindAnyObjectByType<PipeSpawner>().StopSpawning();
-        
+
         PipeController[] pipes = FindObjectsByType<PipeController>(FindObjectsInactive.Exclude);
         foreach (PipeController pipe in pipes)
         {

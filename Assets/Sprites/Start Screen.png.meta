@@ -26,18 +26,6 @@ TextureImporter:
   - first:
       213: -4524470435756308968
     second: Start Screen_7
-  - first:
-      213: 6531687862265863041
-    second: Start Screen_8
-  - first:
-      213: -321687970102438365
-    second: Start Screen_9
-  - first:
-      213: 4963274310520327847
-    second: Start Screen_10
-  - first:
-      213: -5000830464459819999
-    second: Start Screen_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -79,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -228,10 +216,10 @@ TextureImporter:
       name: Start Screen_3
       rect:
         serializedVersion: 2
-        x: 70
-        y: 69
-        width: 12
-        height: 10
+        x: 83
+        y: 45
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +238,10 @@ TextureImporter:
       name: Start Screen_4
       rect:
         serializedVersion: 2
-        x: 74
-        y: 73
-        width: 36
-        height: 26
+        x: 34
+        y: 13
+        width: 44
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,9 +260,9 @@ TextureImporter:
       name: Start Screen_5
       rect:
         serializedVersion: 2
-        x: 70
-        y: 65
-        width: 8
+        x: 80
+        y: 27
+        width: 6
         height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -294,10 +282,10 @@ TextureImporter:
       name: Start Screen_6
       rect:
         serializedVersion: 2
-        x: 82
-        y: 45
-        width: 16
-        height: 16
+        x: 83
+        y: 0
+        width: 21
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,7 +304,7 @@ TextureImporter:
       name: Start Screen_7
       rect:
         serializedVersion: 2
-        x: 34
+        x: 106
         y: 13
         width: 44
         height: 20
@@ -334,99 +322,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Start Screen_8
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 27
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 18b561e118735aa50800000000000000
-      internalID: 6531687862265863041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Start Screen_9
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 0
-        width: 22
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 326178dde72298bf0800000000000000
-      internalID: -321687970102438365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Start Screen_10
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 27
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7aec26950b711e440800000000000000
-      internalID: 4963274310520327847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Start Screen_11
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 13
-        width: 44
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 124bbe7203b799ab0800000000000000
-      internalID: -5000830464459819999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -438,16 +338,12 @@ TextureImporter:
     nameFileIdTable:
       Start Screen_0: 4113095013109361613
       Start Screen_1: 3043630404809402132
-      Start Screen_10: 4963274310520327847
-      Start Screen_11: -5000830464459819999
       Start Screen_2: -6678981218022589351
       Start Screen_3: -9009343998536362100
       Start Screen_4: 5010745804450734547
       Start Screen_5: 8630058583221124133
       Start Screen_6: 2763851932627750570
       Start Screen_7: -4524470435756308968
-      Start Screen_8: 6531687862265863041
-      Start Screen_9: -321687970102438365
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,7 +11,7 @@ public class PipeSpawner : MonoBehaviour
     public float pipeHeight = 6.4f;
 
     private float spawnTimer = 0f;
-    private bool isSpawning = true;
+    private bool isSpawning = false;
 
     void Update()
     {
@@ -34,7 +34,7 @@ public class PipeSpawner : MonoBehaviour
 
         GameObject pipe = Instantiate(pipePrefab, spawnPos, Quaternion.identity);
 
-        Transform pipeTop    = pipe.transform.Find("PipeTop");
+        Transform pipeTop = pipe.transform.Find("PipeTop");
         Transform pipeBottom = pipe.transform.Find("PipeBottom");
 
         if (pipeTop != null)
@@ -47,5 +47,10 @@ public class PipeSpawner : MonoBehaviour
     public void StopSpawning()
     {
         isSpawning = false;
+    }
+
+    public void StartSpawning()
+    {
+        isSpawning = true;
     }
 }
