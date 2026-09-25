@@ -33,7 +33,17 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
         isGameOver = true;
+        
         FindAnyObjectByType<BirdController>().Die();
+        FindAnyObjectByType<GroundScroller>().StopScrolling();
+        FindAnyObjectByType<PipeSpawner>().StopSpawning();
+        
+        PipeController[] pipes = FindObjectsByType<PipeController>(FindObjectsInactive.Exclude);
+        foreach (PipeController pipe in pipes)
+        {
+            pipe.StopScrolling();
+        }
+
         gameOverImage.SetActive(true);
     }
 

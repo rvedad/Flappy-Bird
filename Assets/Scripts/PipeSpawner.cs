@@ -11,9 +11,12 @@ public class PipeSpawner : MonoBehaviour
     public float pipeHeight = 6.4f;
 
     private float spawnTimer = 0f;
+    private bool isSpawning = true;
 
     void Update()
     {
+        if (!isSpawning) return;
+
         spawnTimer += Time.deltaTime;
 
         if (spawnTimer >= spawnInterval)
@@ -39,5 +42,10 @@ public class PipeSpawner : MonoBehaviour
 
         if (pipeBottom != null)
             pipeBottom.localPosition = new Vector3(0, -(gapSize / 2 + pipeHeight / 2), 0);
+    }
+
+    public void StopSpawning()
+    {
+        isSpawning = false;
     }
 }
