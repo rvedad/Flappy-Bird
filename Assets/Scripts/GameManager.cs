@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // PlayerPrefs.DeleteKey("HighScore");
         gameOverImage.SetActive(false);
         instance = this;
         currentState = GameState.Waiting;
