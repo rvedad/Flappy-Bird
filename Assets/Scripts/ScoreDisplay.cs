@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ScoreDisplay : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class ScoreDisplay : MonoBehaviour
 
     void Awake()
     {
+        CreateDigits();
+    }
+
+    void CreateDigits()
+    {
+        if (digitObjects != null) return;
+
         digitObjects = new GameObject[maxDigits];
 
         for (int i = 0; i < maxDigits; i++)
@@ -29,13 +37,10 @@ public class ScoreDisplay : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        DisplayScore(0);
-    }
     public void DisplayScore(int score)
     {
-        if (digitObjects == null) return;
+        CreateDigits();
+
         string scoreStr = score.ToString();
 
         foreach (GameObject d in digitObjects)
@@ -52,6 +57,34 @@ public class ScoreDisplay : MonoBehaviour
             digitObj.SetActive(true);
             digitObj.GetComponent<SpriteRenderer>().sprite = digitSprites[digitValue];
             digitObj.transform.localPosition = new Vector3(startX + i * digitSpacing, 0, 0);
+        }
+    }
+
+    public void FlashGold()
+    {
+        StartCoroutine(FlashGoldRoutine());
+    }
+
+    IEnumerator FlashGoldRoutine()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            SetDigitColors(Color.gold);
+            yield return new WaitForSeconds(0.15f);
+
+            SetDigitColors(Color.white);
+            yield return new WaitForSeconds(0.15f);
+        }
+    }
+
+    void SetDigitColors(Color color)
+    {
+        CreateDigits();
+
+        foreach (GameObject digit in digitObjects)
+        {
+            if (digit.activeSelf)
+                digit.GetComponent<SpriteRenderer>().color = color;
         }
     }
 }

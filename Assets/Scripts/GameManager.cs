@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        // PlayerPrefs.DeleteKey("HighScore");
         gameOverImage.SetActive(false);
         instance = this;
         currentState = GameState.Waiting;
@@ -45,10 +46,10 @@ public class GameManager : MonoBehaviour
         scoreDisplay.gameObject.SetActive(false);
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreIcon.SetActive(false);
+        highScoreDisplay.gameObject.SetActive(false);
     }
     void Start()
     {
-        highScoreDisplay.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         scoreDisplay.DisplayScore(0);
     }
@@ -97,14 +98,15 @@ public class GameManager : MonoBehaviour
             pipe.StopScrolling();
         }
 
-        CheckHighScore();
         gameOverImage.SetActive(true);
         audioSource.PlayOneShot(dieSound);
+
         if (highScoreDisplay != null)
         {
             highScoreDisplay.gameObject.SetActive(true);
             highScoreIcon.SetActive(true);
         }
+        CheckHighScore();
     }
 
     public void RestartGame()
@@ -126,6 +128,9 @@ public class GameManager : MonoBehaviour
             highScore = score;
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
+
+            scoreDisplay.FlashGold();
+            highScoreDisplay.FlashGold();
         }
 
         if (highScoreDisplay != null)

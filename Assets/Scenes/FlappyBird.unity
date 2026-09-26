@@ -818,7 +818,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 87f52ba4f5fbf6a498ad0dc2e7208b4f, type: 3}
   - {fileID: 21300000, guid: 4ff4bbc0a1d74ad45b1d3a9d2ed36ecd, type: 3}
   - {fileID: 21300000, guid: 9f70e8fe9143d6b4d8a82ae43a41499f, type: 3}
-  digitSpacing: 0.6
+  digitSpacing: 0.7
   digitScale: 3
 --- !u!4 &526862232
 Transform:
@@ -1311,6 +1311,7 @@ MonoBehaviour:
   rotateSpeed: 5
   flapSound: {fileID: 8300000, guid: a9ff356357d917445a243f4be7acb83c, type: 3}
   hitSound: {fileID: 8300000, guid: 5e88c464bfeb7c547bc2c178ec4b8f08, type: 3}
+  deathJumpForce: 5
 --- !u!82 &1496900771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1494,7 +1495,7 @@ Transform:
   m_GameObject: {fileID: 1805946345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1687,7 +1688,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 87f52ba4f5fbf6a498ad0dc2e7208b4f, type: 3}
   - {fileID: 21300000, guid: 4ff4bbc0a1d74ad45b1d3a9d2ed36ecd, type: 3}
   - {fileID: 21300000, guid: 9f70e8fe9143d6b4d8a82ae43a41499f, type: 3}
-  digitSpacing: 0.6
+  digitSpacing: 0.7
   digitScale: 3
 --- !u!4 &2094392068
 Transform:

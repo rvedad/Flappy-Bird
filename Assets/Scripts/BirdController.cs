@@ -157,9 +157,9 @@ IEnumerator FlashWhite()
     for (int i = 0; i < 3; i++)
     {
         spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(0.14f);
+        yield return new WaitForSeconds(0.15f);
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.14f);
+        yield return new WaitForSeconds(0.15f);
     }
     spriteRenderer.color = Color.white;
 }
